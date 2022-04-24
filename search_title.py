@@ -1,20 +1,18 @@
 import sqlite3
 
-with sqlite3.connect("netflix.db") as connect:
-    cursor = connect.cursor()
-    query = """
-        SELECT title, country, release_year, listed_in, description
-        FROM netflix
-        """
-    cursor.execute(query)
-    result = cursor.fetchall()
 
-
-    # поиск по названию фильма
-    def get_tat(name):
+def get_tat(name):
+    with sqlite3.connect("netflix.db") as connect:
+        cursor = connect.cursor()
+        query = f"""
+            SELECT title, country, release_year, listed_in, description
+            FROM netflix
+            WHERE title = '{name}'
+            """
+        cursor.execute(query)
+        result = cursor.fetchall()
 
         for i in result:
-            if name in i[0]:
                 return {
                     'title': i[0],
                     'country': i[1],
@@ -22,6 +20,8 @@ with sqlite3.connect("netflix.db") as connect:
                     'listed_in': i[3],
                     'description': i[4],
                 }
+
+
 
 
 
