@@ -8,7 +8,7 @@ def get_genre(genre):
                 SELECT title, description
                 FROM netflix   
                 WHERE listed_in = '{genre}'  
-                AND release_year > 2010
+                ORDER BY release_year DESC
                 LIMIT 10
                 """
         cursor.execute(query)

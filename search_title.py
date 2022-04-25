@@ -8,6 +8,8 @@ def get_tat(name):
             SELECT title, country, release_year, listed_in, description
             FROM netflix
             WHERE title = '{name}'
+            ORDER BY release_year DESC
+            LIMIT 1
             """
         cursor.execute(query)
         result = cursor.fetchall()

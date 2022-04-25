@@ -38,4 +38,4 @@ def by_get_genre(genre):
 
 
 
-app.run(debug=True)
+app.run()
